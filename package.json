@@ -4,7 +4,8 @@
   "description": "task3",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/ab3pc/test3/issues"
   },
-  "homepage": "https://github.com/ab3pc/test3#readme"
+  "homepage": "https://github.com/ab3pc/test3#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "joi": "^17.5.0",
+    "morgan": "^1.10.0",
+    "uuid": "^8.3.2"
+  }
 }
