@@ -6,7 +6,7 @@ const morgan = require('morgan');
 
 const PORT = process.env.PORT || 3001;
 const notesRoute = require('./routes/notes')
-//{notesValidation} = require('./validations/notes');
+
 app.listen(PORT, process.env.DOMAIN, (error) => {
 	error ? console.log(error) : console.log(`Listening port ${PORT}`)
 });
