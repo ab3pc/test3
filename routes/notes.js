@@ -8,9 +8,10 @@ const {notesValidation} = require('../validations/notes');
 let notes = allNotes;
   //GET ALL NOTES
   router.get('/', (req, res) => {
-	res.status(200).json(notes);
-	//res.send(notes);
+	res.json(notes);
+
 });
+
   //GET STATS
   router.get('/stats', (req, res) => {
 	let categoryStat = {
@@ -31,8 +32,17 @@ let notes = allNotes;
 
   //GET RETRIEVE
   router.get('/:id', (req, res) => {
-	let currentNote = notes.find(item => item.id === Number(req.params.id));
-res.status(200).json(currentNote);
+	  let indx = notes.findIndex(elem => elem.id === req.params.id);
+	  if(indx >= 0) {
+		res.status(200).json(notes[indx]);
+	  }
+	  else {
+		res.json({
+			success: false,
+			message: 'Can\'t find element by ID',
+		})
+	  }
+	
 });
 
 //POST Add notes
@@ -45,7 +55,7 @@ router.post('/', (req,res)=> {
 	
 	const newNotes = {
 		id: v4(),
-		date: getDate(),
+		created: getDate(),
 		name,
 		content,
 		category: addIconName(category),
@@ -63,8 +73,18 @@ router.post('/', (req,res)=> {
 
 //DELETE
 router.delete('/:id', (req, res) => {
-	notes = notes.filter(item => item.id !== Number(req.params.id));
-	res.status(200).json({message: 'Deleted notes!'})
+	const indx = notes.findIndex(elem => elem.id === req.params.id);
+	if(indx >= 0) {
+		notes = notes.filter(item => item.id !== req.params.id);
+		res.status(200).json({message: 'Deleted notes!'})
+	}
+	else {
+		res.json({
+			success: false,
+			message: 'Can\'t find element by ID',
+		})
+	}
+
 })
 
 //PATCH
@@ -72,21 +92,46 @@ router.patch('/:id', (req, res) => {
 	const {error} = notesValidation(req.body)
 	if(error) {
 		return res.status(400).json({message: error.details[0].message})
-	}
+	};
 	let {name, content, category} = req.body;
-	notes = notes.map(item => {
-		if(item.id === Number(req.params.id)) {
-			console.log(req.params.id)
-			item.name = name;
-			item.content = content;
-			item.category = addIconName(category);
-			item.dates = parseDates(content);
-			return item;
-		}
-		return item;
-	})
-	console.log(name, content, category)
-	res.json(notes)
+	const indx = notes.findIndex(elem => elem.id === req.params.id);
+	if(indx >=0) {
+		notes[indx].name = name;
+		notes[indx].content = content;
+		notes[indx].category = addIconName(category);
+		notes[indx].dates = parseDates(content);
+	res.json({
+			success: true,
+			message: 'Edited!',
+			notes: notes[indx]
+		})
+	}
+	else {
+		res.json({
+			success: false,
+			message: 'Can\'t find element by ID',
+		})
+	}
+	
+})
+//PUT /category
+router.put('/:id', (req,res) => {
+	const indx = notes.findIndex(elem => elem.id === req.params.id);
+	console.log(indx)
+	if(indx >= 0) {
+		notes[indx].active = !notes[indx].active;
+			res.json({
+			success: true,
+			message: 'Archived/UnArchived',
+			notes: notes[indx]
+		})
+	} else {
+		res.json({
+			success: false,
+			message: 'Can\'t find element by ID'
+		})
+	}
+
 })
 
 module.exports = router

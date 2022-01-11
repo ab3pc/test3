@@ -14,5 +14,5 @@ app.use(morgan(process.env.LOG_LEVEL))
 app.use(express.urlencoded({extended:false}))// req.body parce
 app.use(express.json());// I can work with req, and can send JSON and throuth form
 
-app.use('/notes', notesRoute)
+app.use('/api/notes', notesRoute)
 

@@ -1,6 +1,6 @@
 exports.allNotes =  [
 	{
-	  id: 1,
+	  id: "1",
 	  name: "Shopping list",
 	  created: "May 05, 2021",
 	  category: { name: "Task", icon: "fas fa-shopping-cart" },
@@ -10,7 +10,7 @@ exports.allNotes =  [
 	  active: true,
 	},
 	{
-	  id: 2,
+	  id: "2",
 	  name: "The theory of evolution",
 	  created: "May 07, 2021",
 	  category: { name: "Random", icon: "fas fa-brain"},
@@ -19,7 +19,7 @@ exports.allNotes =  [
 	  active: true,
 	},
 	{
-	  id: 3,
+	  id: "3",
 	  name: "New Feature",
 	  created: "Jun 01, 2021",
 	  category: { name: "Idea", icon: "far fa-lightbulb" },
@@ -28,7 +28,7 @@ exports.allNotes =  [
 	  active: true,
 	},
 	{
-	  id: 4,
+	  id: "4",
 	  name: "Bruce Lee",
 	  created: "Jun 02, 2021",
 	  category: { name: "Quote", icon: "fas fa-quote-right" },
@@ -37,7 +37,7 @@ exports.allNotes =  [
 	  active: true,
 	},
 	{
-	  id: 5,
+	  id: "5",
 	  name: "Books",
 	  created: "Jun 03, 2021",
 	  category: { name: "Task", icon: "fas fa-shopping-cart" },
@@ -46,7 +46,7 @@ exports.allNotes =  [
 	  active: true,
 	},
 	{
-	  id: 6,
+	  id: "6",
 	  name: "Archived Archived",
 	  created: "Jan 01, 2021",
 	  category: { name: "Task", icon: "fas fa-shopping-cart" },
@@ -55,7 +55,7 @@ exports.allNotes =  [
 	  active: false,
 	},
 	{
-	  id: 7,
+	  id: "7",
 	  name: "Another Archived notes",
 	  created: "Jan 03, 2022",
 	  category: { name: "Quote", icon: "fas fa-quote-right" },
