@@ -8,7 +8,7 @@ ____
 
 :white_check_mark: Action: Retrieve item 
 > URI Parameters:  
->:black_square_button: **id: required(integer/string)**
+>:black_square_button: **id: required(string)**
 ____
 ##### Endpoint: /api/notes/stats
 :white_check_mark: Action: Get data statistics
@@ -25,20 +25,20 @@ ____
 ##### Endpoint: /api/notes/:id  
 :white_check_mark: Action: remove item  
 > URI Parameters:  
->:black_square_button: **id: required(integer/string)**  
+>:black_square_button: **id: required(string)**  
 ____
 ### Query type:PATCH
 ##### Endpoint: /api/notes/:id  
 :white_check_mark: Action: edit item  
 > URI Parameters:  
->:black_square_button: **id: required(integer/string)**  
->:black_square_button: **name: (string - min3 max15)**  
->:black_square_button: **content: (string - min3 max30)**  
->:black_square_button: **category: (string, one of: 'task', 'random', 'idea', 'quote')**  
+>:black_square_button: **id: required(string)**  
+>:black_square_button: **name: required(string - min3 max15)**  
+>:black_square_button: **content: required(string - min3 max30)**  
+>:black_square_button: **category: required(string, one of: 'task', 'random', 'idea', 'quote')**  
 
 ### Query type:PUT
 ##### Endpoint: /api/notes/:id  
 :white_check_mark: Action: Archived/UnArchived 
 > URI Parameters:  
->:black_square_button: **id: required(integer/string)**  
+>:black_square_button: **id: required(string)**  
 
